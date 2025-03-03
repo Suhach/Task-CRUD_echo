@@ -8,7 +8,7 @@ import (
 	"test/internal/taskService"
 )
 
-// ------HANDLER---FOR---ALL--TASKS---\\
+// --------------------GET--ALL--TASKS-----------------------------\\
 func GetHandler(service *taskService.TaskService) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		tasks, err := service.GetAllTasks()
@@ -21,7 +21,7 @@ func GetHandler(service *taskService.TaskService) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, tasks)
 	}
 }
-
+//--------------------GET--task---by--ID----------------------------\\
 func GetWIDHandler(service *taskService.TaskService) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		idParam := c.Param("id")
@@ -43,7 +43,7 @@ func GetWIDHandler(service *taskService.TaskService) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, task)
 	}
 }
-
+//-----------------------Create----------task----------------------\\
 func PostHandler(service *taskService.TaskService) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var task taskService.Task
@@ -67,7 +67,7 @@ func PostHandler(service *taskService.TaskService) echo.HandlerFunc {
 		})
 	}
 }
-
+//-------------------------Update----task-----------------------------\\
 func PatchHandler(service *taskService.TaskService) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		idParam := c.Param("id")
@@ -100,7 +100,7 @@ func PatchHandler(service *taskService.TaskService) echo.HandlerFunc {
 		})
 	}
 }
-
+//-------------------------DELETE--task------------------------------\\
 func DeleteHandler(service *taskService.TaskService) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		idParam := c.Param("id")
